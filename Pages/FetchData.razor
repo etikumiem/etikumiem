@@ -33,22 +33,50 @@ izglītības iestādēs (no 5 līdz 15 gadu vecumā)”, Projekta nr. lzp-2020/2
 
     <EditForm Model="@searchModel" OnSubmit="@OnSearch" class="d-flex mt-1">
         <InputText @bind-Value="searchModel.Query" class="form-control" type="search" placeholder="Meklēt" aria-label="Search"  />
-        <button class="btn btn-success ms-1" type="submit">Meklēt</button>
+
+        <select class="form-select ms-2" @bind="searchModel.Grade">
+            <option value="">Pēc klases</option>
+            @foreach (var g in grades)
+            {
+                <option value="@g">@g</option>
+            }
+        </select>
+
+         <select class="form-select ms-2" @bind="searchModel.Topic">
+            <option value="">Pēc tēmas</option>
+            @foreach (var g in topics)
+            {
+                <option value="@g">@g</option>
+            }
+        </select>
+
+         <select class="form-select ms-2" @bind="searchModel.ResourceType">
+            <option value="">Pēc veida</option>
+            @foreach (var g in resourceTypes)
+            {
+                <option value="@g">@g</option>
+            }
+        </select>
+       
+        <button class="btn btn-success ms-2" type="submit">Meklēt</button>
     </EditForm>
+
+    
 
     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-            <button class="btn btn-outline-secondary ms-1 mt-1" type="button" @onclick="ClearResults">Notīrīt rezultātus</button>
+            <button class="btn btn-outline-secondary ms-1 mt-1" type="button" @onclick="ClearResults">Notīrīt</button>
         </li>
-        @if (virtues.Count > filteredVirtues.Count || !filteredVirtues.Any())
+       @* @if (virtues.Count > filteredVirtues.Count || !filteredVirtues.Any())
         {
             <li class="nav-item">
                 <button class="btn btn-outline-secondary ms-1 mt-1" type="button" @onclick="ShowAll">Rādīt visus ierakstus</button>
             </li>
-        }
+        }*@
       </ul>
   </div>
 </nav>
+
 
 @if (virtues == null)
 {

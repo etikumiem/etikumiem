@@ -10,6 +10,12 @@ namespace BlazorTest.Pages
     {
         private List<VirtueRecord> virtues = new List<VirtueRecord>();
 
+        private List<string> grades => virtues?.Select(x => x.Grade).Distinct().OrderBy(x => x).ToList() ?? new List<string>();
+
+        private List<string> topics => virtues?.Select(x => x.Topic).Distinct().OrderBy(x => x).ToList() ?? new List<string>();
+
+        private List<string> resourceTypes => virtues?.Select(x => x.ResourceType).Distinct().OrderBy(x => x).ToList() ?? new List<string>();
+
         private List<VirtueRecord> filteredVirtues = new List<VirtueRecord>();
 
         private VirtueRecord selectedVirtue = null;
@@ -50,12 +56,13 @@ namespace BlazorTest.Pages
 
         protected void OnSearch()
         {
+            filteredVirtues = virtues.ToList();
             if (!string.IsNullOrWhiteSpace(searchModel?.Query))
             {
                 searchModel.MatchedQ = "";
                 var q = searchModel.Query.ToLowerInvariant();
 
-                filteredVirtues = virtues.Where(x =>
+                filteredVirtues = filteredVirtues.Where(x =>
                     x.EtapValues.Any(v => v.Contains(q)) ||
                     x.EtapVirtues.Any(v => v.Contains(q)) ||
                     x.School2030Values.Any(v => v.Contains(q)) ||
@@ -76,19 +83,42 @@ namespace BlazorTest.Pages
                     searchModel.MatchedQ = string.Join(", ", allMatched.Distinct());
                 }
             }
+
+            if (!string.IsNullOrEmpty(searchModel.Grade))
+            {
+                filteredVirtues = filteredVirtues.Where(x => x.Grade == searchModel.Grade).ToList();
+            }
+
+            if (!string.IsNullOrEmpty(searchModel.Topic))
+            {
+                filteredVirtues = filteredVirtues.Where(x => x.Topic == searchModel.Topic).ToList();
+            }
+
+            if (!string.IsNullOrEmpty(searchModel.ResourceType))
+            {
+                filteredVirtues = filteredVirtues.Where(x => x.ResourceType == searchModel.ResourceType).ToList();
+            }
         }
 
         protected void ShowAll()
         {
             filteredVirtues = virtues.ToList();
-            searchModel.Query = "";
+            ClearSearch();
         }
 
         protected void ClearResults()
         {
-            filteredVirtues.Clear();
+            filteredVirtues = virtues.ToList();
+            ClearSearch();
+        }
+
+        private void ClearSearch()
+        {
             searchModel.Query = "";
             searchModel.MatchedQ = "";
+            searchModel.ResourceType = "";
+            searchModel.Grade = "";
+            searchModel.Topic = "";
         }
 
         private CsvConfiguration CsvConfig = new CsvConfiguration(new CultureInfo("lv-lv"))
@@ -104,5 +134,10 @@ namespace BlazorTest.Pages
     {
         public string Query { get; set; } = "";
         public string MatchedQ { get; set; } = "";
+        public string Grade { get; set; } = "";
+
+        public string Topic { get; set; } = "";
+
+        public string ResourceType { get; set; } = "";
     }
 }
