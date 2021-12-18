@@ -8,7 +8,7 @@
   "resources": {
     "assembly": {
       "AntiXssLibrary.dll": "sha256-EhvyeNw3SB19C9F5+AN5tPWLJTve96Jw\/nja9MpBXYs=",
-      "BlazorTest.dll": "sha256-1J+OOpprMxgBDVp0QBFBQmszejK2Y8gj+xZFbPUCSNM=",
+      "BlazorTest.dll": "sha256-2DmPncgl+tn+zU3vaMPzBVNbyR2Jd9Tr+Jfk4Y+OtF8=",
       "CsvHelper.dll": "sha256-C4tsA83oB+MBNtP8l59LBwoVfNHIUlOQRsJXdSktBuk=",
       "Havit.Blazor.Components.Web.Bootstrap.dll": "sha256-mskBWljgoDJVqML1\/TuCAViDRiEnCdWLvK9jQbz+BYg=",
       "Havit.Blazor.Components.Web.dll": "sha256-07zxefqy+JLE9VHrhFggw+BslW49ylI1DDrV9Mfkcb4=",
