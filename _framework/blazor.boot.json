@@ -8,12 +8,12 @@
   "resources": {
     "assembly": {
       "AntiXssLibrary.dll": "sha256-EhvyeNw3SB19C9F5+AN5tPWLJTve96Jw\/nja9MpBXYs=",
-      "BlazorTest.dll": "sha256-2DmPncgl+tn+zU3vaMPzBVNbyR2Jd9Tr+Jfk4Y+OtF8=",
+      "BlazorTest.dll": "sha256-lLfwBASRDwM3H9MAJ5vw8tfFYhhUyTXvntZhVDbf7yM=",
       "CsvHelper.dll": "sha256-C4tsA83oB+MBNtP8l59LBwoVfNHIUlOQRsJXdSktBuk=",
       "Havit.Blazor.Components.Web.Bootstrap.dll": "sha256-mskBWljgoDJVqML1\/TuCAViDRiEnCdWLvK9jQbz+BYg=",
       "Havit.Blazor.Components.Web.dll": "sha256-07zxefqy+JLE9VHrhFggw+BslW49ylI1DDrV9Mfkcb4=",
       "Havit.Core.dll": "sha256-shSiV\/cHGOV6DuNeiFb9s2O0CwZ32dzcHbN64tRS9kE=",
-      "Microsoft.AspNetCore.Components.dll": "sha256-4UTiyXtSca62T9ZhwAP3TXsPY8Opto7pefGKm6ZtUeo=",
+      "Microsoft.AspNetCore.Components.dll": "sha256-YrPfOvUQYG9ZfytvXrOvaZEr8nFJDW7TZdxlwCAvzuU=",
       "Microsoft.AspNetCore.Components.Forms.dll": "sha256-gdztdXMbrPwFXQ4svJBNcM2rDgtc2Dnx1fHTJf3Vzm4=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-GITV5vtEAuI7f0bGWErdsXOBtJmTpxnDBDAxSJSaTTs=",
       "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-OQA+GHjdTnBP+WcXteqx5FUJ\/NOX3HBpc9M\/uuwJEL8=",
