@@ -40,7 +40,7 @@ izglītības iestādēs (no 5 līdz 15 gadu vecumā)”, Projekta nr. lzp-2020/2
             </div>
             <div class="col-lg-2 mt-1">
                 <select class="form-select" @bind="searchModel.Grade">
-                    <option value=""> - Pēc klases (viss)</option>
+                    <option value=""> - Pēc klases</option>
                     @foreach (var g in grades)
                     {
                         <option value="@g">@g</option>
@@ -49,7 +49,7 @@ izglītības iestādēs (no 5 līdz 15 gadu vecumā)”, Projekta nr. lzp-2020/2
             </div>
             <div class="col-lg-2 mt-1">
                 <select class="form-select" @bind="searchModel.Topic">
-                    <option value=""> - Pēc tēmas (viss)</option>
+                    <option value=""> - Pēc tēmas</option>
                     @foreach (var g in topics)
                     {
                         <option value="@g">@g</option>
@@ -58,7 +58,7 @@ izglītības iestādēs (no 5 līdz 15 gadu vecumā)”, Projekta nr. lzp-2020/2
             </div>
             <div class="col-lg-2 mt-1">
                 <select class="form-select" @bind="searchModel.ResourceType">
-                    <option value=""> - Pēc resursa veida (viss)</option>
+                    <option value=""> - Pēc resursa veida</option>
                     @foreach (var g in resourceTypes)
                     {
                         <option value="@g">@g</option>
