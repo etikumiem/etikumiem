@@ -3,6 +3,8 @@
 @inject HttpClient Http
 
 <div class="alert alert-light" role="alert">
+    <img src="E-tap-logo.png" class="float-end" style="max-width: 150px; margin-top: -6px;" />
+       
     <p>Ar šo aplikāciju Jūs varat viegli atrast tikumiskās audzināšanas tiešsaistes resursus latviešu valodā. Šobrīd datu bāzē, ko izmanto šī aplikācija, atrodas @virtues.Count resursi 
         latviešu valodā. Tie ir galvenokārt resursi, kas iekļauti tikumiskās audzināšanas programmas “e-TAP”. Šī programma piedāvā Latvijas kontekstam pielāgotus mācību resursus 
         pirmsskolas un pamatizglītības skolotājiem, lai palīdzētu īstenot tikumisko audzināšanu pirmsskolas izglītības iestādēs un skolās. Vairāk par programmu var uzzināt šajā 
@@ -22,10 +24,15 @@
     <p>
         <b>"e-TAP" vērtības:</b> cilvēks kā persona, cieņa, rūpes, mīlestība, brīvība, atbildība, daba, patiesība, harmonija, miers, saskaņa
     </p>
+    
     <p><b>"e-TAP" tikumi:</b> izpalīdzība, līdzjūtība, empātija, dāsnums, pateicīgums, pašiniciatīva, radošums, pārliecinātība, atvērtība jaunajam, čaklums, neatlaidība (noturība), apņēmīgums, pazemība, zinātkāre, kritiskā spriestspēja, pašiedziļināšanās, attapība, atklātība, pašvadība, draudzīgums, līdzdalīgums, spēja sadarboties</p>
-    <em>Aplikācija “e-Tikumiem” izveidota Latvijas Zinātnes padomes projekta “Digitālas mācību
+
+    <img src="FLP-logo.png" class="float-end" style="max-width: 185px;" />    
+    <p>
+        <em>Aplikācija “e-Tikumiem” izveidota Latvijas Zinātnes padomes projekta “Digitālas mācību
 programmas piemērotības un īstenojamības izpēte jauniešu tikumiskajai audzināšanai Latvijas
 izglītības iestādēs (no 5 līdz 15 gadu vecumā)”, Projekta nr. lzp-2020/2-0277</em>
+    </p>
 </div>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -104,7 +111,7 @@ else
             @foreach (var virtue in filteredVirtues)
             {
                 <tr >
-                    <td style="cursor:pointer" @onclick="() => ShowDetails(virtue)"><a href=""> @virtue.Name</a></td>
+                    <td style="cursor:pointer" @onclick="() => ShowDetails(virtue)"><a href="/" class="link-dark"> @virtue.Name</a></td>
                     <td>@virtue.ResourceType</td>
                     <td>@(!string.IsNullOrWhiteSpace(virtue.VideoMinutes) && virtue.VideoMinutes != "0" ? virtue.VideoMinutes : "")</td>
                     <td>@virtue.Grade</td>
@@ -231,7 +238,120 @@ else
                     <p class="mb-1">@selectedVirtue.Comments</p>
                 </HxListGroupItem>    
             }
-    </HxListGroup>
+        </HxListGroup>
 
 	</BodyTemplate>
 </HxModal>
+
+
+@*<HxOffcanvas @ref="offCanvasComponent"  Title="@selectedVirtue?.Name" Size="OffcanvasSize.Large">
+	<BodyTemplate>
+		 <HxListGroup CssClass="list-group-flush">
+            @if (selectedVirtue?.Url != null)
+            {
+                <HxListGroupItem>
+                    <small class="text-muted">Saite</small>
+                    <p class="mb-1">
+                    @if (selectedVirtue.Url.StartsWith("http"))
+                    {
+                        <a href="@selectedVirtue.Url" target="_blank">@selectedVirtue.Url</a>
+                    } 
+                    else
+                    {
+                        <span>selectedVirtue?.Url</span>
+                    }
+                    </p>
+                </HxListGroupItem>
+            }
+            <HxListGroupItem>
+                <small class="text-muted">Resursa veids</small>
+                <p class="mb-1">@selectedVirtue?.ResourceType</p>
+            </HxListGroupItem>
+
+            @if (!string.IsNullOrWhiteSpace(selectedVirtue?.VideoMinutes) && selectedVirtue.VideoMinutes != "0")
+            {
+                <HxListGroupItem>
+                    <small class="text-muted">Apskates ilgums (minūtes)</small>
+                    <p class="mb-1">@selectedVirtue?.VideoMinutes</p>
+                </HxListGroupItem>
+            }
+            <HxListGroupItem>
+                <p class="mb-0">
+                    <small class="text-muted">Resursa vieta programmā “e-TAP”</small>
+                </p>
+                                
+                <small class="text-muted">Klase</small>
+                <p class="mb-1">@selectedVirtue?.Grade</p>
+            
+                <small class="text-muted">Tēma</small>
+                <p class="mb-1">@selectedVirtue?.Topic</p>
+            
+                <small class="text-muted">Nodarbība</small>
+                <p class="mb-1">@selectedVirtue?.Lesson</p>
+            
+                <small class="text-muted">Aktivitāte</small>
+                <p class="mb-1">@selectedVirtue?.Activity</p>
+            </HxListGroupItem>
+            <HxListGroupItem>
+                <small class="text-muted">Apraksts</small>
+                <p class="mb-1">@selectedVirtue?.Description</p>
+            </HxListGroupItem>
+            <HxListGroupItem>
+                <small class="text-muted">Avots</small>
+                <p class="mb-1">@selectedVirtue?.Source</p>
+            </HxListGroupItem>
+
+            @if (selectedVirtue?.School2030Values != null && selectedVirtue.School2030Values.Any())
+            {
+                <HxListGroupItem>
+                    <small class="text-muted">Skola 2030 vērtības</small>
+                    @foreach (var item in @selectedVirtue.School2030Values)
+                    {
+                        <span class="badge bg-secondary mx-2 mt-1">@item</span>            
+                    }
+                </HxListGroupItem>
+            }
+
+            @if (selectedVirtue?.School2030Virtues != null && selectedVirtue.School2030Virtues.Any())
+            {
+                <HxListGroupItem>
+                    <small class="text-muted">Skola 2030 tikumi</small>
+                    @foreach (var item in @selectedVirtue.School2030Virtues)
+                    {
+                        <span class="badge bg-secondary mx-2 mt-1">@item</span>            
+                    }
+                </HxListGroupItem>
+            }
+
+            @if (selectedVirtue?.EtapValues != null && selectedVirtue.EtapValues.Any())
+            {
+                <HxListGroupItem>
+                    <small class="text-muted">"e-TAP" vērtības</small>
+                    @foreach (var item in @selectedVirtue.EtapValues)
+                    {
+                        <span class="badge bg-secondary mx-2 mt-1">@item</span>            
+                    }
+                </HxListGroupItem>
+            }
+
+            @if (selectedVirtue?.EtapVirtues != null && selectedVirtue.EtapVirtues.Any())
+            {
+                <HxListGroupItem>
+                    <small class="text-muted">"e-TAP" tikumi</small>
+                    @foreach (var item in @selectedVirtue.EtapVirtues)
+                    {
+                        <span class="badge bg-secondary mx-2 mt-1">@item</span>            
+                    }
+                </HxListGroupItem>
+            }
+            
+            @if (!string.IsNullOrWhiteSpace(selectedVirtue?.Comments))
+            {
+                <HxListGroupItem >
+                    <small class="text-muted">Komentārs</small>
+                    <p class="mb-1">@selectedVirtue.Comments</p>
+                </HxListGroupItem>    
+            }
+        </HxListGroup>
+	</BodyTemplate>
+</HxOffcanvas>*@
